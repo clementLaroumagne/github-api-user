@@ -1,57 +1,32 @@
-import Link from "next/link"
-import Image from 'next/image'
-import { LogoLink } from "./logoLink"
-
-let convertDate = (date) => {
-    // Créer un objet Date à partir de la chaîne de caractères
-    var dateObject = new Date(date)
-
-    // Options de formatage pour obtenir "18 Nov 2023"
-    var options = { day: 'numeric', month: 'short', year: 'numeric' }
-
-    // Formater la date selon les options
-    var formattedDate = dateObject.toLocaleDateString('en-SU', options)
-
-    // Afficher le résultat
-    formattedDate = formattedDate.replace(',', ' ')
-    console.log(formattedDate);
-    return formattedDate
-}
-
-export function UserCard(data) {
+export function UserCardLoading(data) {
     return (
-        <div className="flex flex-col items-center space-x-2 p-5 dark:border border-solid border-border rounded-lg shadow-outer w-6/12 max-w-lg">
+        <div className="flex flex-col items-center space-x-2 p-5 dark:border border-solid border-border rounded-lg shadow-outer w-6/12 max-w-lg animate-pulse">
             <div className="flex items-center justify-start gap-4 w-full mb-4">
-                <img
-                    src={data.avatar_url}
-                    alt={data.name}
-                    className="rounded-full w-24 h-24 border border-solid border-border"
+                <div
+                    className="rounded-full w-24 h-24 border border-solid border-border bg-gray-200 dark:bg-gray-700"
                 />
                 <div>
-                    <h2 className="text-2xl">{data.name}</h2>
-                    <a href={data.html_url} target="_blank" className="text-primary">{"@" + data.login}</a>
-                    <p>Joined {convertDate(data.created_at)}</p>
+                    <h2 className="text-2xl h-5 w-32 bg-gray-200 dark:bg-gray-700 rounded-full mb-2.5"></h2>
+                    <div className="h-4 w-10 bg-gray-200 dark:bg-gray-700 rounded-full mb-2.5"></div>
+                    <p className="h-4 w-48 bg-gray-200 dark:bg-gray-700 rounded-full mb-2.5"></p>
                 </div>
             </div>
 
 
-            <p
-                className={"w-full mb-4" + (data.bio == undefined ? " text-muted-foreground" : "")}
-            >{data.bio != undefined ? data.bio : "This profile as no bio"}
-            </p>
+            <div className="w-4/6 mb-4 h-4 bg-gray-200 dark:bg-gray-700 rounded-full"></div>
 
             <div className="flex w-full justify-evenly bg-muted p-4 mb-4 rounded-lg">
                 <p className="flex flex-col text-muted-foreground">
                     Repos
-                    <strong className="text-xl text-foreground">{data.public_repos}</strong>
+                    <strong className="h-6 w-10 bg-gray-200 dark:bg-gray-700 rounded-full"></strong>
                 </p>
                 <p className="flex flex-col text-muted-foreground">
                     Followers
-                    <strong className="text-xl text-foreground">{data.followers}</strong>
+                    <strong className="h-6 w-10 bg-gray-200 dark:bg-gray-700 rounded-full"></strong>
                 </p>
                 <p className="flex flex-col text-muted-foreground">
                     Following
-                    <strong className="text-xl text-foreground">{data.following}</strong>
+                    <strong className="h-6 w-10 bg-gray-200 dark:bg-gray-700 rounded-full"></strong>
                 </p>
 
             </div>
@@ -91,22 +66,15 @@ export function UserCard(data) {
                     </div>
                 </div> */}
 
-                {data.company ? 
-                    <LogoLink
+                {console.log(data.company)}
+                {/* <LogoLink
                     link="https://github.com/"
                     content={data.company}
                     logo={`<svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24" fill="currentColor"><path d="M120-120v-560h160v-160h400v320h160v400H520v-160h-80v160H120Zm80-80h80v-80h-80v80Zm0-160h80v-80h-80v80Zm0-160h80v-80h-80v80Zm160 160h80v-80h-80v80Zm0-160h80v-80h-80v80Zm0-160h80v-80h-80v80Zm160 320h80v-80h-80v80Zm0-160h80v-80h-80v80Zm0-160h80v-80h-80v80Zm160 480h80v-80h-80v80Zm0-160h80v-80h-80v80Z" /></svg>`}
-                    />
-                :
-                    <LogoLink
-                    link=""
-                    content="Not available"
-                    logo={`<svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24" fill="muted"><path d="M120-120v-560h160v-160h400v320h160v400H520v-160h-80v160H120Zm80-80h80v-80h-80v80Zm0-160h80v-80h-80v80Zm0-160h80v-80h-80v80Zm160 160h80v-80h-80v80Zm0-160h80v-80h-80v80Zm0-160h80v-80h-80v80Zm160 320h80v-80h-80v80Zm0-160h80v-80h-80v80Zm0-160h80v-80h-80v80Zm160 480h80v-80h-80v80Zm0-160h80v-80h-80v80Z" /></svg>`}
-                    />
-                }
+                /> */}
             </div>
         </div>
     )
 }
 
-export default UserCard;
+export default UserCardLoading;

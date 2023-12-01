@@ -6,6 +6,7 @@ import useFetch from "../hooks/useFetch";
 import InputWithButton from "../components/ui/searchBar/searchBar";
 import { ModeToggle } from "../components/ui/toggle-mode";
 import { UserCard } from "../components/ui/userCard/userCard";
+import { UserCardLoading } from "../components/ui/userCard/userCardLoading";
 
 export default function Page() {
   const [user, setUser] = useState("shadcn")
@@ -21,7 +22,7 @@ export default function Page() {
         <div className="w-6/12 max-w-lg">
 
           <nav className="flex justify-between items-center">
-            <h1>Github Looker 🐙</h1>
+            <h1 className="text-xl">Github Looker 🐙</h1>
             <ModeToggle />
 
           </nav>
@@ -29,8 +30,8 @@ export default function Page() {
             handlerClick={setUser}
           />
         </div>
-
-        <UserCard {...data} />
+        
+        {(isLoading||error=="Problème avec la requête")? <UserCardLoading/> : <UserCard {...data}/>}
         {console.log(error)}
       </body>
     </html>
