@@ -3,6 +3,7 @@ import './globals.css'
 
 import { ThemeProvider } from "@/components/ui/theme-provider"
 
+
 const courier = Courier_Prime({
   subsets: ['latin'],
   weight: "400",
@@ -11,6 +12,9 @@ const courier = Courier_Prime({
 export const metadata = {
   title: 'Git Hub API',
   description: 'Get information about users from GitHub API',
+  icons: {
+    icon: '/favicon.ico',
+  }
 }
 
 export default function RootLayout({ children }) {

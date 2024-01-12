@@ -14,7 +14,6 @@ let convertDate = (date) => {
 
     // Afficher le résultat
     formattedDate = formattedDate.replace(',', ' ')
-    console.log(formattedDate);
     return formattedDate
 }
 
@@ -57,52 +56,70 @@ export function UserCard(data) {
             </div>
 
             <div className="flex flex-wrap text-sm">
-                <div className="w-1/2">
-                    <div className={"flex items-center gap-2 justify-start p-4" + (data.location == undefined ? " text-muted-foreground" : '')}>
-                        <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24" fill="currentColor"><path d="M480-480q33 0 56.5-23.5T560-560q0-33-23.5-56.5T480-640q-33 0-56.5 23.5T400-560q0 33 23.5 56.5T480-480Zm0 294q122-112 181-203.5T720-552q0-109-69.5-178.5T480-800q-101 0-170.5 69.5T240-552q0 71 59 162.5T480-186Zm0 106Q319-217 239.5-334.5T160-552q0-150 96.5-239T480-880q127 0 223.5 89T800-552q0 100-79.5 217.5T480-80Zm0-480Z" /></svg>
-
-                        <p className="truncate align-middle">{data.location ? data.location : "Not available"}</p>
-                    </div>
-                </div>
 
 
-                <div className="w-1/2">
-                    <div className={"flex items-center gap-2 justify-start p-4" + (data.location == undefined ? " text-muted-foreground" : '')}>
-                        <p className="text-xl align-middle">𝕏</p>
-                        <p className="truncate align-middle">{data.location ? data.location : "Not available"}</p>
-                    </div>
-                </div>
-
-                <div className="w-1/2">
-                    {console.log(data.blog == "")}
-                    <div className={"flex items-center gap-2 justify-start p-4" + (data.blog == "" ? " text-muted-foreground" : '')}>
-                        <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24" fill="currentColor" className="shrink-0"><path d="M440-280H280q-83 0-141.5-58.5T80-480q0-83 58.5-141.5T280-680h160v80H280q-50 0-85 35t-35 85q0 50 35 85t85 35h160v80ZM320-440v-80h320v80H320Zm200 160v-80h160q50 0 85-35t35-85q0-50-35-85t-85-35H520v-80h160q83 0 141.5 58.5T880-480q0 83-58.5 141.5T680-280H520Z" /></svg>
-
-
-                        <p className="truncate align-middle">{data.blog ? data.blog : "Not available"}</p>
-                    </div>
-                </div>
-
-                {/* <div className="w-1/2">
-                    <div className={"flex items-center gap-2 justify-start p-4" + (data.company == undefined ? " text-muted-foreground" : '')}>
-                        <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24" fill="currentColor"><path d="M120-120v-560h160v-160h400v320h160v400H520v-160h-80v160H120Zm80-80h80v-80h-80v80Zm0-160h80v-80h-80v80Zm0-160h80v-80h-80v80Zm160 160h80v-80h-80v80Zm0-160h80v-80h-80v80Zm0-160h80v-80h-80v80Zm160 320h80v-80h-80v80Zm0-160h80v-80h-80v80Zm0-160h80v-80h-80v80Zm160 480h80v-80h-80v80Zm0-160h80v-80h-80v80Z" /></svg>
-
-                        <a className="truncate align-middle" href={data.company ? "https://github.com/" + data.company.replace("@", "") : ""} target="blank">{data.company ? data.company : "Not available"}</a>
-                    </div>
-                </div> */}
-
-                {data.company ? 
+                {data.company ?
                     <LogoLink
-                    link="https://github.com/"
-                    content={data.company}
-                    logo={`<svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24" fill="currentColor"><path d="M120-120v-560h160v-160h400v320h160v400H520v-160h-80v160H120Zm80-80h80v-80h-80v80Zm0-160h80v-80h-80v80Zm0-160h80v-80h-80v80Zm160 160h80v-80h-80v80Zm0-160h80v-80h-80v80Zm0-160h80v-80h-80v80Zm160 320h80v-80h-80v80Zm0-160h80v-80h-80v80Zm0-160h80v-80h-80v80Zm160 480h80v-80h-80v80Zm0-160h80v-80h-80v80Z" /></svg>`}
-                    />
-                :
+                        link=""
+                        logo="company.svg"
+                    >
+                        {data.company}
+                    </LogoLink>
+                    :
                     <LogoLink
-                    link=""
-                    content="Not available"
-                    logo={`<svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24" fill="muted"><path d="M120-120v-560h160v-160h400v320h160v400H520v-160h-80v160H120Zm80-80h80v-80h-80v80Zm0-160h80v-80h-80v80Zm0-160h80v-80h-80v80Zm160 160h80v-80h-80v80Zm0-160h80v-80h-80v80Zm0-160h80v-80h-80v80Zm160 320h80v-80h-80v80Zm0-160h80v-80h-80v80Zm0-160h80v-80h-80v80Zm160 480h80v-80h-80v80Zm0-160h80v-80h-80v80Z" /></svg>`}
-                    />
+                        link=""
+                        logo="company.svg"
+                    >
+                        Not available
+                    </LogoLink>
+                }
+
+                {data.location ?
+                    <LogoLink
+                        link={"https://www.google.fr/maps/place/" + data.location}
+                        logo="location.svg"
+                    >
+                        {data.location}
+                    </LogoLink>
+                    :
+                    <LogoLink
+                        link=""
+                        logo="location.svg"
+                    >
+                        Not available
+                    </LogoLink>
+                }
+
+                {data.blog ?
+                    <LogoLink
+                        link={data.blog}
+                        logo="website.svg"
+                    >
+                        {data.blog}
+                    </LogoLink>
+                    :
+                    <LogoLink
+                        link=""
+                        logo="website.svg"
+                    >
+                        Not available
+                    </LogoLink>
+                }
+
+                {data.twitter_username ?
+                    <LogoLink
+                        link={"https://twitter.com/" + data.twitter_username}
+                        logo="x.svg"
+                    >
+                        {data.twitter_username}
+                    </LogoLink>
+                    :
+                    <LogoLink
+                        link=""
+                        logo="x.svg"
+                    >
+                        Not available
+                    </LogoLink>
                 }
             </div>
         </div>
